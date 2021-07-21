@@ -23,6 +23,7 @@ public class backtoui : MonoBehaviour
         //可以顯示winner + pose
         if (Gobal_TCP.show_pose_text && Gobal_TCP.timeup == true)
         {        //win / lose
+            Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!back");
             if (Gobal_TCP.PSS_winer == 0)
             {
                 UnityChanVoice.clip = UnityChanVoiceClips[0];

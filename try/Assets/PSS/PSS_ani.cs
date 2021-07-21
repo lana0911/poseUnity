@@ -11,7 +11,7 @@ using UnityEngine.UI;
 using System.Text;
 using System.Collections.Concurrent;
 using UnityEngine.Audio;
-
+using UnityEngine.SceneManagement;
 public class PSS_ani : MonoBehaviour
 {
     public Animator UnityChanControl = null;
@@ -111,8 +111,7 @@ public class PSS_ani : MonoBehaviour
             UnityChanControl.SetBool("ScOver", false);
             UnityChanControl.SetBool("Lose", false);
             UnityChanControl.SetBool("Win", false);
-            Gobal_TCP.reset = false; 
-            Gobal_TCP.game_mode = 0;
+            SceneManager.LoadScene(0);
 
         }
     }

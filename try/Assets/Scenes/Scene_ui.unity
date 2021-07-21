@@ -1682,9 +1682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74cfc300fc3d7cc4cb1e92f55df5bba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IP: 192.168.56.1
-  Port: 8000
-  mode_int: 0
 --- !u!1 &1070943483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,7 +2412,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560631130}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: f801cfdbf4d0f6f46a15fd974b25d541, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 6b9f33fc2c56a7043ba98d5f4a243742, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -2431,7 +2428,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
