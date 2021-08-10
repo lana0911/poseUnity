@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class varName
 {
+
+    //ca
+    public static bool came = false; //
+
+
     public static bool playing = false; //playing
     public static int mode = -1; //playing
 

@@ -24,7 +24,9 @@ public class gameName : MonoBehaviour
     public GameObject win_img; 
     public GameObject heart;
     public GameObject cry;
+    public GameObject light;
 
+    // public GameObject fire;
     public Animator UnityChanControl = null;
     //content
     public Text content;
@@ -55,9 +57,11 @@ public class gameName : MonoBehaviour
     //PRIZE
     //public Text prizeText;
     RectTransform rt;
+    RectTransform rt_light;
     float scale = 1.6f;
     int y = 174;
     public Text backto;
+    float z = 0;
     
     
     void Start()
@@ -73,6 +77,7 @@ public class gameName : MonoBehaviour
         Gift.text = "";
 
         rt = candy2_img.GetComponent<RectTransform>();
+        rt_light = light.GetComponent<RectTransform>();
         img.SetActive(false);
 
         trash_img.SetActive(false);
@@ -83,6 +88,8 @@ public class gameName : MonoBehaviour
         win_img.SetActive(false);
         heart.SetActive(false);
         cry.SetActive(false);
+        light.SetActive(false);
+        //fire.SetActive(false);
 
         backto.text = "";
     }
@@ -272,6 +279,7 @@ public class gameName : MonoBehaviour
         {
 
             //規0
+            varName.came = false;
             varName.gameName_show = true;
             varName.pss_name = 1;
             varName.introTitle_show = false;
@@ -300,14 +308,20 @@ public class gameName : MonoBehaviour
     // //頒發獎品-----------------------------------------------------------------------
     void ceremony ()
     {
+        varName.came = true;
         bg2_img.SetActive(true);
-
+        light.SetActive(true);
+        //fire.SetActive(true);
         if (varName.winner == 2 || varName.winner == 0)//pleyer win or tie 有獎品
         {
             win_img.SetActive(true);
             phone_img.SetActive(true);
             candy2_img.SetActive(true);
-            InvokeRepeating("goDown", 1, 0.2f);
+            
+
+            InvokeRepeating("goDown", 1, 0.008f);
+            InvokeRepeating("goDown_Forlight", 1, 0.005f);
+
 
         }
         else if (varName.winner == 1)//model win 無獎品
@@ -316,7 +330,9 @@ public class gameName : MonoBehaviour
             lose_img.SetActive(true);
             trash_img.SetActive(true);
             candy2_img.SetActive(true);
-            InvokeRepeating("goDown", 1, 0.2f);
+            InvokeRepeating("goDown", 1, 0.008f);
+            InvokeRepeating("goDown_Forlight", 1, 0.005f);
+
         }
 
     }
@@ -326,13 +342,15 @@ public class gameName : MonoBehaviour
   
         Debug.Log("scale=" + scale); 
         Debug.Log("y=" + y);
-        scale -= 0.05f;
-        y -= 35;
+        scale -= 0.005f;
+        y -= 3;
         rt.localScale = new Vector3(scale, scale, scale);
-        rt.localPosition = new Vector3(44, y, 0);
-        if(y <= -350)
+        rt.localPosition = new Vector3(-26, y, 0);
+
+        if (y <= -350)
         {
             CancelInvoke("goDown");
+            CancelInvoke("goDown_Forlight");
             if (varName.winner == 2 || varName.winner == 0)//pleyer win or tie 有獎品
                 heart.SetActive(true);
             else
@@ -346,7 +364,11 @@ public class gameName : MonoBehaviour
         }
 
     }
-
+    void goDown_Forlight()
+    {
+        z += 0.7f;
+        rt_light.localRotation = Quaternion.Euler(0, 0, z);
+    }
 
     //一行一行-----------------------------------------------------------------------
     IEnumerator Display1()

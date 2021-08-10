@@ -14,6 +14,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 public class GameManager : MonoBehaviour
 {
+    //cama
+    int fi = 0;
     public AudioSource Voice = null;
     public AudioClip[] VoiceClips = null;
     //int game = mode_num.mode;
@@ -76,9 +78,11 @@ public class GameManager : MonoBehaviour
 
 
         }
-        if (varName.game1Over)//告訴server遊戲結束
+        if (varName.game1Over && fi==0)//告訴server遊戲結束
         {
             client.Send(Encoding.UTF8.GetBytes("over;"));
+            //fi = 1;
+            varName.game1Over = false;
         }
 
     }
